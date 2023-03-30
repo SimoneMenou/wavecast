@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -28,6 +30,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\ManyToOne(inversedBy: 'User')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?AudioFile $audioFile = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: AudioFile::class)]
+    private Collection $audioFiles;
+
+    public function __construct()
+    {
+        $this->audioFiles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,5 +111,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getAudioFile(): ?AudioFile
+    {
+        return $this->audioFile;
+    }
+
+    public function setAudioFile(?AudioFile $audioFile): self
+    {
+        $this->audioFile = $audioFile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AudioFile>
+     */
+    public function getAudioFiles(): Collection
+    {
+        return $this->audioFiles;
+    }
+
+    public function addAudioFile(AudioFile $audioFile): self
+    {
+        if (!$this->audioFiles->contains($audioFile)) {
+            $this->audioFiles->add($audioFile);
+            $audioFile->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAudioFile(AudioFile $audioFile): self
+    {
+        if ($this->audioFiles->removeElement($audioFile)) {
+            // set the owning side to null (unless already changed)
+            if ($audioFile->getUser() === $this) {
+                $audioFile->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
