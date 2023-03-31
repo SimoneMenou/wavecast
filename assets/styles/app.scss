@@ -1,3 +1,56 @@
+/* Ici on importe ce dont on a besoin pour importer ce qui est nescéssaire à l'utilisation de tailwind*/
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+body {
+    background-color: pink;
+}
+.bg-color
+{
+ background-color: #5FC8A2;
+}
+.bg-services
+{
+ background-color: #37C1FF;
+}
+.bg-purple{
+    background-color: #AE78F3;
+
+}
+.bg-black{
+    background-color:black;
+
+}
+.bg-b
+{
+    background-color:black;
+    color: white;
+
+}
+.bg-b2
+{
+    background-color: #5FC8A2;
+    color: black
+
+}
+.text-intro{
+    color: black;
+
+}
+.text-color{
+    color: white;
+
+
+}
+nav{
+    li {
+        a {
+            color: black;
+        }
+    }
+    
+}
+.border-b
+{
+    border-bottom: solid black 5px;
+}

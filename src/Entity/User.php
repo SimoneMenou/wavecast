@@ -31,11 +31,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToOne(inversedBy: 'User')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?AudioFile $audioFile = null;
-
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: AudioFile::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: AudioFile::class, orphanRemoval: true)]
     private Collection $audioFiles;
 
     public function __construct()
@@ -113,18 +109,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getAudioFile(): ?AudioFile
-    {
-        return $this->audioFile;
-    }
-
-    public function setAudioFile(?AudioFile $audioFile): self
-    {
-        $this->audioFile = $audioFile;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, AudioFile>
      */
@@ -154,4 +138,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+   
 }

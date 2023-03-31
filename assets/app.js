@@ -10,5 +10,5 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
-
+//Idem ici on importe tailwind qui utilise du javascript aussi
 import 'tw-elements';

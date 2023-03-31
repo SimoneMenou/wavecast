@@ -30,20 +30,19 @@ class AudioFile
     #[ORM\Column(length: 255)]
     private ?string $Transfer_link = null;
 
-    #[ORM\OneToMany(mappedBy: 'audioFile', targetEntity: User::class, orphanRemoval: true)]
-    private Collection $User;
 
-    #[ORM\ManyToOne(inversedBy: 'audioFiles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'audioFiles')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
+    #[ORM\ManyToOne(inversedBy: 'audioFiles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
-        $this->User = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -111,17 +110,7 @@ class AudioFile
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
+   
 
     public function getCategorie(): ?Categorie
     {
@@ -131,6 +120,18 @@ class AudioFile
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
