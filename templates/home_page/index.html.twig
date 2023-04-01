@@ -14,21 +14,12 @@
             <p class="mt-3 text-base text-intro sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Ecoutez, telecharger , partagez vos contenus audio et devenez créateur de podcast.</p>
             <div class="mt-10 sm:mt-12">
 
-                <!-- This is a working waitlist form. Create your access key from https://web3forms.com/s to setup.  -->
-              
-        <div class="mt-3 sm:mt-0 sm:ml-3"><button type="submit" class="block w-full rounded-md bg-b py-3 px-4 font-medium text-white shadow hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-gray-900">
-        <a href= {{ ('/login') }}>Login</a>
-        </button>
-        </div>
-                <div class="mt-3 sm:mt-0 sm:ml-3"><button type="submit" class="block w-full rounded-md bg-b py-3 px-4 font-medium text-white shadow hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-gray-900">
-                <a href= {{ ('/register') }}>Register</a>
-        </button>
-    </div>
+      
              
             </div>
           </div>
         </div>
-        <div class="mt-12 hidden lg:block"><img class="" src="https://images.unsplash.com/photo-1608209098851-e82b613e843c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" /></div>
+        <div class="mt-12 hidden lg:block"><img class="" src="https://images.unsplash.com/photo-1629487017643-e10b36ef4ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="" /></div>
       </div>
     </div>
   </div>
@@ -45,17 +36,24 @@
   <div class="mx-auto max-w-4xl rounded-3xl bg-[#092540] p-20 text-center bg-black">
     <h2 class="text-5xl font-bold leading-tight text-white">A VOS PODCASTS ! </h2>
     <p class="mt-5 text-xl leading-8 text-white">Vous avez des contenu audio et vous souhaitez le partager?</p>
-    <p class="mt-5 text-xl leading-8 text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p class="mt-5 text-xl leading-8 text-white">  
+    Que vous soyez un podcasteur débutant ou expérimenté, Wavecast est l'application idéale 
+    pour vous aider à partager votre contenu avec votre audience.En résumé, Wavecast est une application web complète qui offre à la fois
+    un service de hosting de MP3 et un outil de création de podcast, le tout dans un environnement convivial et facile à utiliser. 
+    Avec cette application, vous pouvez créer des podcasts de qualité professionnelle en quelques minutes seulement, sans avoir besoin 
+    de compétences techniques avancées ou d'équipements coûteux. 
+    Essayez Wavecast dès maintenant et découvrez une nouvelle façon de partager votre contenu audio avec le monde entier.
+    </p>
     <div class="mt-6 flex items-center justify-center gap-4">
       <button class="flex items-center justify-center gap-2 rounded-full bg-violet-500 px-5 py-3 text-lg font-medium text-white">
-        <span>Inscrivez-vous</span>
+        <span><a href= {{ ('/login') }}>Login</a></span>
         <span
           ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M6.00156 13.4016L4.60156 12.0016L8.60156 8.00156L4.60156 4.00156L6.00156 2.60156L11.4016 8.00156L6.00156 13.4016Z" fill="white" /></svg
         ></span>
       </button>
       <button class="flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-3 text-lg font-medium text-white">
-        <span>Connectez-vous</span>
+        <span> <a href= {{ ('/register') }}>Register</a></span>
         <span
           ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M6.00156 13.4016L4.60156 12.0016L8.60156 8.00156L4.60156 4.00156L6.00156 2.60156L11.4016 8.00156L6.00156 13.4016Z" fill="white" /></svg
@@ -65,53 +63,68 @@
   </div>
 </div>
     <div class="p-8">
-   <div id="services" class="section relative pt-20 pb-8 md:pt-16 md:pb-0 bg-services">
-    <div class="container xl:max-w-6xl mx-auto px-4">
-        <!-- Heading start -->
-        <header class="text-center mx-auto mb-12 lg:px-20">
-            <h2 class="text-2xl leading-normal mb-2 font-bold text-black">A propos </h2>
-            <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Decouvrez les differentes fonctionalités de mon app </p>
-        </header>
-        <!-- End heading -->
-        <!-- row -->
-        <div class="flex flex-wrap flex-row -mx-4 text-center">
-            <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-                <!-- service block -->
-                <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                    <div class="inline-block text-gray-900 mb-4">
-                        <!-- icon -->
-                        
-                    </div>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Ecoutez</h3>
-                    <p class="text-gray-500">En tant que visiteur vous pouvez voir les different contenu des Users</p>
-                </div>
-                <!-- end service block -->
-            </div>
-            <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <!-- service block -->
-                <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                    <div class="inline-block text-gray-900 mb-4">
-                        <!-- icon -->
-                       
-                    </div>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Creer</h3>
-                    <p class="text-gray-500">Devenez Createur en proposant du contenu</p>
-                </div>
-                <!-- end service block -->
-            </div>
-            <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                <!-- service block -->
-                <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                    <div class="inline-block text-gray-900 mb-4">
-                        <!-- icon -->
-                      </div>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Podcaster</h3>
-                    <p class="text-gray-500">Profitez du services de podcast qui converti vos mp3 en podcast</p>
-                </div>
-            </div>
-        </div>
+  <div class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:text-center">
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">La liste idéale des fonctionalités de WaveCast</p>
+      <p class="mt-6 text-lg leading-8 text-gray-600">Toutes les fonctionalités</p>
     </div>
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+        <div class="relative pl-16">
+          <dt class="text-base font-semibold leading-7 text-gray-900">
+            <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+              </svg>
+            </div>
+            Upload des mp3 (la base)
+          </dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">
+          Celui ou Celle qui crée un compte peux avoir une liste de favoris par d'autres créateur.
+          Mais aussi sa liste personelle du contenu de son compte. 
+          </dd>
+        </div>
+
+        <div class="relative pl-16">
+          <dt class="text-base font-semibold leading-7 text-gray-900">
+            <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+              </svg>
+            </div>
+            podcast
+          </dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Un peu plus chaud , l'user peut creer des podcast contenant des épisodes</dd>
+        </div>
+
+        <div class="relative pl-16">
+          <dt class="text-base font-semibold leading-7 text-gray-900">
+            <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </div>
+            Mode ecouteur
+          </dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Ecoutez tout les contenu de créateur </dd>
+        </div>
+
+        <div class="relative pl-16">
+          <dt class="text-base font-semibold leading-7 text-gray-900">
+            <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" />
+              </svg>
+            </div>
+            Filtre categorie
+          </dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Un systeme de filtre pour toutes les categorie des playlists automatique de la platteforme.</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
 </div>
-   
+
 
 {% endblock %}

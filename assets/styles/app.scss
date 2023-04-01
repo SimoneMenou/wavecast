@@ -3,8 +3,21 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 body {
-    background-color: pink;
+    
+    margin:0;
+  
+    
 }
+
+    .block 
+    {
+    margin-bottom: 5%;
+    
+
+}
+.mt-24 {
+    margin-top:0;
+  }
 .bg-color
 {
  background-color: #5FC8A2;
