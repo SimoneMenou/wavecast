@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AudioFile{% endblock %}
+
+{% block body %}
+    <h1>AudioFile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ audio_file.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ audio_file.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ audio_file.description }}</td>
+            </tr>
+            <tr>
+                <th>Miniature</th>
+                <td>{{ audio_file.miniature }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ audio_file.duree ? audio_file.duree.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Transfer_link</th>
+                <td>{{ audio_file.TransferLink }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_audio_file_index') }}">back to list</a>
+
+    <a href="{{ path('app_audio_file_edit', {'id': audio_file.id}) }}">edit</a>
+
+    {{ include('audio_file/_delete_form.html.twig') }}
+{% endblock %}

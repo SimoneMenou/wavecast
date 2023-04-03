@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AudioFile index{% endblock %}
+
+{% block body %}
+    <h1>AudioFile index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Miniature</th>
+                <th>Duree</th>
+                <th>Transfer_link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for audio_file in audio_files %}
+            <tr>
+                <td>{{ audio_file.id }}</td>
+                <td>{{ audio_file.titre }}</td>
+                <td>{{ audio_file.description }}</td>
+                <td>{{ audio_file.miniature }}</td>
+                <td>{{ audio_file.duree ? audio_file.duree.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
+                <td>{{ audio_file.TransferLink }}</td>
+                <td>
+                    <a href="{{ path('app_audio_file_show', {'id': audio_file.id}) }}">show</a>
+                    <a href="{{ path('app_audio_file_edit', {'id': audio_file.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_audio_file_new') }}">Create new</a>
+{% endblock %}

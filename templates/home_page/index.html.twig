@@ -4,7 +4,82 @@
 
 {% block body %}
 
-<div class="relative overflow-hidden">
+{% if app.user %}
+<section class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+        <div class="lg:-mx-6 lg:flex lg:items-center">
+            <img class="object-cover object-center lg:w-1/2 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem]" src="https://images.unsplash.com/photo-1611946258523-9c2bfabb94e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1071&q=80" alt="">
+
+            <div class="mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
+             <h1 class="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl lg:w-96">
+                  Bienvenue {{ app.user.userIdentifier }}!
+                </h1>
+                <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400 ">
+                    “Ici vous pouvez gerer votre compte créateur”
+                </p>
+               
+
+                <h3 class="mt-6 text-lg font-medium text-blue-500">Podcast : diffusion pour baladeur</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                Le podcasting, aussi appelé diffusion pour baladeur puis service audio à la demande en France, et baladodiffusion au Canada francophone, 
+                est un moyen de diffuser sur Internet des fichiers (audio, vidéo ou autres) 
+                appelés podcasts (aussi appelés audio ou audio à la demande (AAD) en France, et balados au Canada).
+                Par l'entremise d'un abonnement à un flux de données au format RSS ou Atom, 
+                le podcasting permet aux utilisateurs l'écoute immédiate ou le téléchargement automatique d'émissions audio ou vidéo,
+                à destination par exemple de baladeurs numériques, en vue d'une écoute ultérieure
+                (Wikipedia)
+                </p>
+
+             
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+        <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">Espace Createur </h1>
+
+        <p class="mt-4 text-center text-gray-500 dark:text-gray-300">
+          Profites des fonctionalités de l'application
+        </p>
+
+
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+            <div>
+                <img class="object-cover w-full rounded-lg h-96 "
+                    src="https://images.unsplash.com/photo-1537730748877-5d8fcd41a7ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                    alt="">
+                <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">Ma bibliothéque</h2>
+                <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Tout mes contenus audio</p>
+              
+                 <button class="bg-b text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700"><a href="{{ path('app_audio_file_index') }}">Voir tout mes contenus</a></button>
+            </div>
+            
+
+            <div>
+                <img class="object-cover w-full rounded-lg h-96 "
+                    src="https://images.unsplash.com/photo-1566397565545-15f52e3f15ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1529&q=80"
+                    alt="">
+                <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">Mes coup de coeurs</h2>
+                <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Les contenu qui m'ont plu</p>
+                 <button class="bg-b text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700"><a href="{{ path('app_audio_file_index') }}">Voir tout mes contenus</a></button>
+                
+            </div>
+
+            <div>
+                <img class="object-cover w-full rounded-lg h-96 "
+                    src="https://images.unsplash.com/photo-1596466919236-82fd47fa5c03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                    alt="">
+                <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">Mon Espace créateur
+                </h2>
+                <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Tout mes podcasts</p>
+                 <button class="bg-b text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700"><a href="{{ path('app_register') }}"></a>Voir la liste de tout mes podcast (crud podcast)</button>
+            </div>
+        </div>
+    </div>
+</section>
+  {% else %}
+  <div class="relative overflow-hidden">
   <div class="bg-color pt-10 pb-14 sm:pt-16 lg:overflow-hidden lg:pt-24 lg:pb-24">
     <div class="mx-auto max-w-5xl lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -13,9 +88,6 @@
             <h1 class="mt-4 text-4xl font-bold tracking-tight text-intro sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"><span class="block text-color">Bienvenue sur WaveCast! </span><span class="block text-black">Ecoutez et partagez vos podcasts </span></h1>
             <p class="mt-3 text-base text-intro sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Ecoutez, telecharger , partagez vos contenus audio et devenez créateur de podcast.</p>
             <div class="mt-10 sm:mt-12">
-
-      
-             
             </div>
           </div>
         </div>
@@ -24,13 +96,6 @@
     </div>
   </div>
 </div>
-
-<!-- component -->
-<!-- 
-    Tailwind Play Link:
-    https://play.tailwindcss.com/Iq18cgjApI 
--->
-
 
 <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-purple py-6 sm:py-12">
   <div class="mx-auto max-w-4xl rounded-3xl bg-[#092540] p-20 text-center bg-black">
@@ -125,6 +190,18 @@
     </div>
   </div>
 </div>
+                
+  {% endif %}
+
+
+
+<!-- component -->
+<!-- 
+    Tailwind Play Link:
+    https://play.tailwindcss.com/Iq18cgjApI 
+-->
+
+
 
 
 {% endblock %}

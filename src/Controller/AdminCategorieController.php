@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Categorie;
 use App\Form\CategorieType;
+use Symfony\Component\Form\FormFactoryInterface;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,7 @@ class AdminCategorieController extends AbstractController
     }
     #[Route('/new', name: 'app_admin_categorie_new', methods: ['GET', 'POST'])]
     //Nouvelle Categorie
-    public function new(Request $request, CategorieRepository $categorieRepository): Response
+    /*public function new(Request $request, CategorieRepository $categorieRepository): Response
     {
         $categorie = new Categorie();
         $form = $this->createForm(CategorieType::class, $categorie);
@@ -38,6 +39,23 @@ class AdminCategorieController extends AbstractController
         return $this->renderForm('admin_categorie/new.html.twig', [
             'categorie' => $categorie,
             'form' => $form,
+        ]);
+    }*/
+    public function newAdminCategorie(Request $request, FormFactoryInterface $formFactory)
+    {
+        $form = $formFactory->createBuilder(FormType::class)
+            ->add('name', TextType::class)
+            ->add('submit', SubmitType::class, ['label' => 'Save'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Handle form submission
+        }
+
+        return $this->render('example.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 

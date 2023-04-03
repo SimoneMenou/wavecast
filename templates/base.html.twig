@@ -45,9 +45,24 @@
       
             <div class="auth flex items-center w-full md:w-full">
             {% if app.user %}
-                <div class="mb-3">
-                    Hello {{ app.user.userIdentifier }}, 
+                <div class="mb-3 profil">
+                    Hello {{ app.user.userIdentifier }}
                     <button class="bg-b2 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100"><a href="{{ path('app_logout') }}">Logout</a></button>
+                </div>
+                <div class="mb-3 profil">
+                    
+                    <button class="bg-b2 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100"><a href="{{ path('app_logout') }}">Mes Audio </a></button>
+                    
+                </div>
+                <div class="mb-3 profil">
+                    
+                    <button class="bg-b2 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100"><a href="{{ path('app_logout') }}">Ajouter un audio </a></button>
+                    
+                </div>
+                <div class="mb-3 profil">
+                    
+                    <button class="bg-b2 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100"><a href="{{ path('app_logout') }}">Mes podcast</a></button>
+                    
                 </div>
            
             {% else %}
