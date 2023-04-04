@@ -2,14 +2,20 @@
 
 namespace App\Controller;
 
+use doctrine;
 use App\Entity\AudioFile;
-//use App\Form\AudioFileType;
-use Symfony\Component\Form\FormFactoryInterface;
+use App\Form\AudioFileType;
+use Doctrine\DBAL\Types\TextType;
 use App\Repository\AudioFileRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 #[Route('/audio/file')]
 class AudioFileController extends AbstractController
@@ -23,14 +29,20 @@ class AudioFileController extends AbstractController
     }
 
     #[Route('/new', name: 'app_audio_file_new', methods: ['GET', 'POST'])]
-    /*public function new(Request $request, AudioFileRepository $audioFileRepository): Response
+    public function new(Request $request, AudioFileRepository $audioFileRepository ,ManagerRegistry $doctrine ): Response
     {
         $audioFile = new AudioFile();
         $form = $this->createForm(AudioFileType::class, $audioFile);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             $audioFileRepository->save($audioFile, true);
+
+            $audioFile->setUser($this->getUser());
+            $manager = $doctrine ->getManager();
+            $manager->persist($audioFile);
+            $manager->flush();
 
             return $this->redirectToRoute('app_audio_file_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -39,32 +51,10 @@ class AudioFileController extends AbstractController
             'audio_file' => $audioFile,
             'form' => $form,
         ]);
-    }*/
-    public function newAudioFile(Request $request, FormFactoryInterface $formFactory)
-    {
-        $form = $formFactory->createBuilder(FormType::class)
-            ->add('name', TextType::class)
-            ->add('submit', SubmitType::class, ['label' => 'Save'])
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Handle form submission
-        }
-
-        return $this->render('example.html.twig', [
-            'form' => $form->createView(),
-        ]);
     }
+  
+    
 
-    #[Route('/{id}', name: 'app_audio_file_show', methods: ['GET'])]
-    public function show(AudioFile $audioFile): Response
-    {
-        return $this->render('audio_file/show.html.twig', [
-            'audio_file' => $audioFile,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'app_audio_file_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, AudioFile $audioFile, AudioFileRepository $audioFileRepository): Response

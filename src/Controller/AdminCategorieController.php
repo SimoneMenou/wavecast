@@ -24,7 +24,7 @@ class AdminCategorieController extends AbstractController
     }
     #[Route('/new', name: 'app_admin_categorie_new', methods: ['GET', 'POST'])]
     //Nouvelle Categorie
-    /*public function new(Request $request, CategorieRepository $categorieRepository): Response
+    public function new(Request $request, CategorieRepository $categorieRepository): Response
     {
         $categorie = new Categorie();
         $form = $this->createForm(CategorieType::class, $categorie);
@@ -40,8 +40,8 @@ class AdminCategorieController extends AbstractController
             'categorie' => $categorie,
             'form' => $form,
         ]);
-    }*/
-    public function newAdminCategorie(Request $request, FormFactoryInterface $formFactory)
+    }
+    /*public function newAdminCategorie(Request $request, FormFactoryInterface $formFactory)
     {
         $form = $formFactory->createBuilder(FormType::class)
             ->add('name', TextType::class)
@@ -57,7 +57,7 @@ class AdminCategorieController extends AbstractController
         return $this->render('example.html.twig', [
             'form' => $form->createView(),
         ]);
-    }
+    }*/
 
     #[Route('/{id}', name: 'app_admin_categorie_show', methods: ['GET'])]
     //affichage details

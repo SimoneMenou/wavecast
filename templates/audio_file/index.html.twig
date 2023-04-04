@@ -23,14 +23,16 @@
                 <td>{{ audio_file.id }}</td>
                 <td>{{ audio_file.titre }}</td>
                 <td>{{ audio_file.description }}</td>
-                <td>{{ audio_file.miniature }}</td>
+                <td><img  class="miniature"src={{ audio_file.miniature }} alt="Logo de MDN"></td>
                 <td>{{ audio_file.duree ? audio_file.duree.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
                 <td>{{ audio_file.TransferLink }}</td>
                 <td>
-                    <a href="{{ path('app_audio_file_show', {'id': audio_file.id}) }}">show</a>
-                    <a href="{{ path('app_audio_file_edit', {'id': audio_file.id}) }}">edit</a>
+                    {# <a href="{{ path('app_audio_file_show', {'id': audio_file.id}) }}">show</a>
+                    <a href="{{ path('app_audio_file_edit', {'id': audio_file.id}) }}">edit</a> #}
                 </td>
             </tr>
+
+            
         {% else %}
             <tr>
                 <td colspan="7">no records found</td>

@@ -3,8 +3,11 @@
 namespace App\Form;
 
 use App\Entity\AudioFile;
+use App\Entity\Categorie;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AudioFileType extends AbstractType
@@ -17,8 +20,14 @@ class AudioFileType extends AbstractType
             ->add('miniature')
             ->add('duree')
             ->add('Transfer_link')
-            ->add('categorie')
-            ->add('user')
+            //parametrage de mon select pour faire reference à ma db
+            ->add('categorie', EntityType::class, [ 'class' => Categorie::class, 'choice_label' => 'titrecategorie' ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'email',
+                'required' => true,
+            ])
+            
         ;
     }
 
