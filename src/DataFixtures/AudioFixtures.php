@@ -13,12 +13,12 @@ class LivreFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $audiofile = new AudioFile();
             // si on a un hydrate, pas besoin de sets...
-            $audiofile->setTitre("Episode ".$i);
+            $audiofile->setTitre("titre ".$i);
             $audiofile->setDescription("Description".$i );
             $audiofile->setMiniature("Miniature".$i);
-            $audiofile->setTransferLink("TransferLink");
-            $audiofile->setCategorie($i + 20);
-            $audiofile->setUser($i + 20);
+            $audiofile->setTransferLink("duree".$i);
+            $audiofile->setCategorie("Transfer_link".$i);
+            $audiofile->setUser("categorie");
             $manager->persist($audiofile);
         }
 
