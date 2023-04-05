@@ -18,7 +18,7 @@ class LivreFixtures extends Fixture
             $audiofile->setMiniature("Miniature".$i);
             $audiofile->setTransferLink("duree".$i);
             $audiofile->setCategorie("Transfer_link".$i);
-            $audiofile->setUser("categorie");
+            //$audiofile->setUser("categorie");
             $manager->persist($audiofile);
         }
 
