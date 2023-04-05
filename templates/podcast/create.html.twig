@@ -16,15 +16,21 @@
   </table>
 
   <h2>Selected Songs</h2>
-  <div id="selected-songs">
-    {# {% for song in playlist %}
-      <div>
-        {{ song.titre }}
-        <input type="hidden" name="songs[]" value="{{ song.id }}">
-        <button class="btn btn-danger remove-song" data-id="{{ song.id }}">Remove</button>
-      </div>
-    {% endfor %} #}
-  </div>
+
+  <form method='POST' action="{{ path('podcast_confirmation') }}">
+    <div id="selected-songs">
+        {# {% for song in playlist %}
+        <div>
+            {{ song.titre }}
+            <input type="hidden" name="songs[]" value="{{ song.id }}">
+            <button class="btn btn-danger remove-song" data-id="{{ song.id }}">Remove</button>
+        </div>
+        {% endfor %} #}
+    </div>
+    <input type="submit">
+</form>
+
+
 {% endblock %}
 
 {% block javascripts %}
