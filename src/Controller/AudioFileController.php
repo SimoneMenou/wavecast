@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/audio/file')]
 class AudioFileController extends AbstractController
@@ -29,14 +29,13 @@ class AudioFileController extends AbstractController
     }
 
     #[Route('/new', name: 'app_audio_file_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AudioFileRepository $audioFileRepository ,ManagerRegistry $doctrine ): Response
+    public function new(Request $request, AudioFileRepository $audioFileRepository, ManagerRegistry $doctrine ): Response
     {
         $audioFile = new AudioFile();
         $form = $this->createForm(AudioFileType::class, $audioFile);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $audioFileRepository->save($audioFile, true);
 
             $audioFile->setUser($this->getUser());
@@ -52,8 +51,8 @@ class AudioFileController extends AbstractController
             'form' => $form,
         ]);
     }
-  
-    
+
+
 
 
     #[Route('/{id}/edit', name: 'app_audio_file_edit', methods: ['GET', 'POST'])]
@@ -77,10 +76,29 @@ class AudioFileController extends AbstractController
     #[Route('/{id}', name: 'app_audio_file_delete', methods: ['POST'])]
     public function delete(Request $request, AudioFile $audioFile, AudioFileRepository $audioFileRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$audioFile->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $audioFile->getId(), $request->request->get('_token'))) {
             $audioFileRepository->remove($audioFile, true);
         }
 
         return $this->redirectToRoute('app_audio_file_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/all', name: 'get_all_songs_json', methods: ['GET'])]
+    public function getAllSongs(AudioFileRepository $audioFileRepository): Response
+    {
+        //Preparation des fichiers 
+        $songs = $audioFileRepository->findAll();
+
+        $data = [];
+        foreach ($songs as $song) {
+            $data[] = [
+                    'id' => $song->getId(),
+                    'titre' => $song->getTitre()
+            // reste
+            ];
+        }
+
+        // dd(json_encode(['data' => $data]));
+        return new JsonResponse(['data' => $data]);
     }
 }

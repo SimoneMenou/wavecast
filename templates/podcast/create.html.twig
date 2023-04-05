@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>Songs</h1>
+  <table id="song-table" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Artist</th>
+        <!-- Add any other relevant columns for each song -->
+        <th></th> <!-- Empty column for the "Add to Playlist" button -->
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Selected Songs</h2>
+  <div id="selected-songs">
+    {# {% for song in playlist %}
+      <div>
+        {{ song.titre }}
+        <input type="hidden" name="songs[]" value="{{ song.id }}">
+        <button class="btn btn-danger remove-song" data-id="{{ song.id }}">Remove</button>
+      </div>
+    {% endfor %} #}
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Initialize Datatables
+    var table = $('#song-table').DataTable({
+        // ajax: '{{ path('get_all_songs_json') }}',
+        ajax: {
+                url: '/audio/file/all',
+                dataSrc: 'data'
+            },
+        columns: [
+            { data: 'id' },
+            { data: 'titre' },
+            { // Add the "Add to Playlist" button
+                data: null,
+                render: function(data, type, row) {
+                return '<button class="btn btn-primary add-to-playlist" data-id="' + data.id + '">Add to Playlist</button>';
+                }
+            }
+        ]
+    });
+
+          // Handle "Add to Playlist" button clicks
+    $('#song-table tbody').on('click', '.add-to-playlist', function() {
+    
+        var songId = $(this).data('id');
+
+        var songTitle = table.row($(this).parents('tr')).data().titre;
+        var songHtml = '<div>' + songTitle + ' <input type="hidden" name="songs[]" value="' + songId + '"> <button class="btn btn-danger remove-song" data-id="' + songId + '">Remove</button></div>';
+            $('#selected-songs').append(songHtml);
+    });
+
+    $('#selected-songs').on('click', '.remove-song', function() {
+        var songId = $(this).data('id');
+        console.log ($(this).parent('div'));
+        $(this).parent('div').remove();
+    });
+
+
+
+    
+
+});
+</script>
+{% endblock %}
+
